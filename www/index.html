@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <script>
+    </script>
+</head>
+<body ng-app="Calculator">
+	<div ng-controller="MainController" class="container">
+		<div class="row">
+			<div class="col-xs-12 form-group">
+					<label for="formula">数式</label>
+					<input id="formula" type="text" class="form-control" required placeholder="数式を入力" ng-model="mathematical_formula">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 form-group">
+				<label for="rp_result">計算結果：</label>
+				<span id="rp_result" class="rp_result">{{ rpf_calculator.calculate(rpf_generator.generate(mathematical_formula)) }}</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 btn-group-justified">
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="D">←</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="C">C</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value=".">.</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="/">/</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 btn-group-justified">
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="7">7</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="8">8</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="9">9</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="*">*</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 btn-group-justified">
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="4">4</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="5">5</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="6">6</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="+">+</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 btn-group-justified">
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="1">1</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="2">2</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="3">3</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="-">-</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 btn-group-justified">
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="0">0</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value="(">(</button>
+				<button  ng-click="onclick($event)" class="btn btn-primary btn-lg" value=")">)</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 form-group">
+				<label for="rp_formula">逆ポーランド記法：</label>
+				<span id="rp_formula" class="rp_formula">{{ rpf_generator.generate(mathematical_formula) }}</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 form-group">
+				<label for="rp_log">計算過程：</label>
+				<pre id="rp_log" class="rp_log">{{ rpf_calculator.process_buffer }}</pre>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/ui-bootstrap-tpls-0.13.4.min.js"></script>
+
+	<script type="text/javascript" src="js/calc.js"></script>
+</body>
+</html>
